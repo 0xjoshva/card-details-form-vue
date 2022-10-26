@@ -1,18 +1,132 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section>
+    <div class="cards">
+      <div class="card"> 
+        <img src="../assets/card-logo.svg" alt="">
+        <p id="card-number">9238 2132 4738 120E</p>
+        <div class="card-details">
+        <p>QUANDALE DINGLE</p>
+        <p>09/26</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>420</p>
+      </div>
+    </div>
+    <form action="post">
+      <label for="name">
+        CARDHOLDER NAME <br />
+        <input name="name" type="text" placeholder="Quandale Dingle" />
+      </label>
+      <label for="number">
+        CARD NUMBER <br />
+        <input name="number" type="text" placeholder="0238 2738 2838 2821" />
+      </label>
+      <div id="details">
+        <label for="date">
+          EXP. DATE (MM/YY) <br />
+          <div id="mmyy">
+            <input name="date" type="text" placeholder="MM" />
+            <input type="text" placeholder="YY" />
+          </div>
+        </label>
+        <label for="cvc">
+          CVC <br />
+          <input type="text" placeholder="e.g 123" />
+        </label>
+      </div>
+      <button>Confirm</button>
+    </form>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+export default {};
+</script>
+<style scoped>
+section {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../assets/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-size: 30% 100%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  column-gap: 10rem;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+#mmyy {
+  display: flex;
+}
+#details {
+  display: flex;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+.card:nth-child(1) {
+  animation: swipe1 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform: translateX(-60px);
+  background: url(../assets/bg-card-front.png);
+  background-repeat: none;
+  width: 27.9rem;
+  height: 15.3rem;
+  padding: 1.5rem;
+  color: var(--white);
+}
+#card-number{
+  letter-spacing: 5px;
+  font-size: 1.7rem;
+  padding-top: 4.5rem;
+}
+.card-details{
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  padding-top: 1rem;
+  font-weight: 400;
+}
+.card:nth-child(2) {
+  transform: translateX(0px);
+  animation: swipe2 0.6s ease-in-out;
+  background: url(../assets/bg-card-back.png);
+  background-repeat: none;
+  width: 27.9rem;
+  height: 15.3rem;
+  color: var(--white);
+}
+.card:nth-child(2) p{
+    font-size: 1rem;
+    transform: translate(360px, 110px);
+    letter-spacing: 4px;
+}
+@keyframes swipe1 {
+  0% {
+    transform: translateX(-500px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(-60px);
+    opacity: 1;
   }
 }
-</script>
+@keyframes swipe2 {
+  0% {
+    transform: translateX(100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+</style>
