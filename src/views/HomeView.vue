@@ -16,23 +16,23 @@
     <form action="post">
       <label for="name">
         CARDHOLDER NAME <br />
-        <input name="name" type="text" placeholder="Quandale Dingle" />
+        <input name="name" type="text" placeholder="e.g Quandale Dingle" />
       </label>
       <label for="number">
         CARD NUMBER <br />
-        <input name="number" type="text" placeholder="0238 2738 2838 2821" />
+        <input name="number" type="text" placeholder="e.g 0238 2738 2838 2821" />
       </label>
       <div id="details">
         <label for="date">
           EXP. DATE (MM/YY) <br />
           <div id="mmyy">
-            <input name="date" type="text" placeholder="MM" />
-            <input type="text" placeholder="YY" />
+            <input name="date" type="number" placeholder="MM" min="1" max="12"/>
+            <input type="number" placeholder="YY" min="22" max="29"/>
           </div>
         </label>
         <label for="cvc">
           CVC <br />
-          <input type="text" placeholder="e.g 123" />
+          <input type="text" placeholder="e.g 123"  />
         </label>
       </div>
       <button>Confirm</button>
@@ -85,7 +85,10 @@ form {
 #card-number{
   letter-spacing: 5px;
   font-size: 1.7rem;
-  padding-top: 4.5rem;
+  margin-top: 4.5rem;
+  background: transparent;
+  border-radius: 12px;
+  padding-left: 10px;
 }
 .card-details{
   display: flex;
@@ -107,7 +110,14 @@ form {
 .card:nth-child(2) p{
     font-size: 1rem;
     transform: translate(360px, 110px);
-    letter-spacing: 4px;
+    letter-spacing: 3px;
+
+}
+.card{
+  transition: .2s ease-in-out all;
+}
+.card:hover{
+  scale: 1.1;
 }
 @keyframes swipe1 {
   0% {
@@ -129,4 +139,57 @@ form {
     opacity: 1;
   }
 }
+
+form{
+  width: 25rem;
+  row-gap: 1rem;
+}
+label{
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--verydarkviolet);
+}
+input{
+  width: 100%;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--lightgreyviolet);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--verydarkviolet);;
+}
+input:focus{
+  border: none;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right bottom, #260B3C, #a053df);
+  border-image-slice: 1;
+}
+::placeholder{
+  color: var(--lightgreyviolet);
+}
+form button{
+  background: var(--verydarkviolet);
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 1.2rem;
+  padding: .8rem;
+}
+#mmyy{
+  display: flex;
+  column-gap: .7rem;
+}
+#mmyy input{
+  width: 5.3rem;
+}
+#details{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+  padding-bottom: 1.6rem;
+}
+
 </style>
