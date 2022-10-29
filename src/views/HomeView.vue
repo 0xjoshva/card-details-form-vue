@@ -3,37 +3,37 @@
     <div class="cards">
       <div class="card"> 
         <img src="../assets/card-logo.svg" alt="">
-        <p id="card-number">9238 2132 4738 120E</p>
+        <p id="card-number">{{ cardnumber }}</p>
         <div class="card-details">
-        <p>QUANDALE DINGLE</p>
-        <p>09/26</p>
+        <p>{{ namesurname.toUpperCase() }}</p>
+        <p>{{month}}/{{year}}</p>
         </div>
       </div>
       <div class="card">
-        <p>420</p>
+        <p>{{ cvc }}</p>
       </div>
     </div>
     <form @submit.prevent="onSubmit">
       <div class="inputs" v-show="submit === false">
       <label for="name">
         CARDHOLDER NAME <br />
-        <input name="name" type="text" placeholder="e.g Quandale Dingle" required/>
+        <input name="name" type="text" placeholder="e.g Quandale Dingle" required v-model="namesurname"/>
       </label>
       <label for="number">
         CARD NUMBER <br />
-        <input name="number" type="text" placeholder="e.g 0238 2738 2838 2821" required/>
+        <input name="number" type="text" placeholder="e.g 0238 2738 2838 2821" required v-model="cardnumber"/>
       </label>
       <div id="details">
         <label for="date">
           EXP. DATE (MM/YY) <br />
           <div id="mmyy">
-            <input name="date" type="number" placeholder="MM" min="1" max="12" required/>
-            <input type="number" placeholder="YY" min="22" max="32" required/>
+            <input name="date" type="number" placeholder="MM" min="1" max="12" required v-model="month"/>
+            <input type="number" placeholder="YY" min="22" max="32" required v-model="year"/>
           </div>
         </label>
         <label for="cvc">
           CVC <br />
-          <input type="text" placeholder="e.g 123"  required/>
+          <input type="text" placeholder="e.g 123"  required v-model="cvc"/>
         </label>
       </div>
       </div>
@@ -51,10 +51,17 @@
 export default {
   data() {
     return {
-      submit: false
+      submit: false,
+      cardnumber: '',
+      namesurname: '',
+      month: '',
+      year: '',
+      cvc: '',
+
+    }
     }
   }
-};
+
 </script>
 <style scoped>
 section {
