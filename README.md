@@ -57,8 +57,8 @@ Users should be able to:
 
 ### Continued development
 
-I want to add responsiveness for all device sizes.
-I would like to add spacing in the input fields.
+- add responsiveness for all device sizes.
+- add spacing in the input fields.
 
 ### Useful resources
 
